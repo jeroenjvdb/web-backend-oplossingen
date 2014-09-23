@@ -1,6 +1,6 @@
 <?php
 	$tekst 			= 	'Test 123...';
-	$_2tekst 		= 	'Test 456'
+	$_2tekst 		= 	'Test 456';
 	$_tekst 		= 	'test';
 	$zin 			= 	'Jean D\'Haeseleir gaat naar Praag!!';
 	$beschrijving 	= 	"Vogelbekdier";
