@@ -1,6 +1,6 @@
 <?php
 	$gegevens = file_get_contents('deel1.txt');
-	$userSplit = explode(';', $gegevens);
+	$userSplit = explode(':', $gegevens);
 	for($i = 0; $i<count($userSplit); $i++){
 		$userSplit[$i] = explode(',', $userSplit[$i]);
 	}
@@ -22,9 +22,9 @@
 						setcookie('authenticated', $_POST['username'], time()+(3600*24*30));
 					} else 
 					{
-					setcookie('authenticated', $_POST['username']);
+						setcookie('authenticated', $_POST['username']);
 					}
-					header('location:cookies-deel1.php');
+						header('location:cookies-deel1.php');
 				} else 
 				{
 					$message= "username and/or password incorrect, try again.";

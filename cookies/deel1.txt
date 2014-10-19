@@ -1,1 +1,1 @@
-jan,wachtwoord;jeroen,lalala;vdb,thuis
+jan,wachtwoord:jeroen,lalala:vdb,thuis:bram,brambo
