@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Include require testen</title>
+</head>
+<body>
+	<h1>Include-require, the assignment</h1>
+	
+	<?php foreach ($artikels as $key => $value): ?>
+		<h2><?=$value['title'] ?></h2>
+		<p><?= $value['text'] ?></p>
+		<p><?= $value['tags'] ?></p>
+	<?php endforeach; ?>
+
+	
+</body>
+</html>

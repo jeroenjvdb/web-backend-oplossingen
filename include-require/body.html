@@ -1,0 +1,9 @@
+	<?php foreach ($artikels as $key => $value): ?>
+		<h2><?= $value['title'] ?></h2>
+		<p><?= $value['text'] ?></p>
+		<p>tags: 
+			<?php foreach ($value['tags'] as $tagKey => $tagValue): ?>
+				<?= $tagValue ?>
+			<?php endforeach; ?>
+		</p>
+	<?php endforeach; ?>
