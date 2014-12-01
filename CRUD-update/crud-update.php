@@ -40,20 +40,33 @@
 		if(isset($_POST['updated']))
 		{
 			$querystringUpdate = 'UPDATE brouwers
-									SET(brnaam = :brouwernaam, adres= :adres, postcode = :postcode, gemeente = :gemeente, omzet = :omzet)
+									SET brnaam 		= :brouwernaam, 
+										adres		= :adres, 
+										postcode 	= :postcode, 
+										gemeente 	= :gemeente, 
+										omzet 		= :omzet
 									WHERE brouwernr = :updated';
 
 			$statementUpdate = $db->prepare($querystringUpdate);
 
-			$statementUpdate->bindParam(':brouwernaam', $brouwernaam);
-			$statementUpdate->bindParam(':adres', $adres);
-			$statementUpdate->bindParam(':postcode', $postcode);
-			$statementUpdate->bindParam(':gemeente', $gemeente);
-			$statementUpdate->bindParam(':omzet', $omzet);
+			$statementUpdate->bindParam(':brouwernaam', $_POST['brnaam']);
+			$statementUpdate->bindParam(':adres', $_POST['adres']);
+			$statementUpdate->bindParam(':postcode', $_POST['postcode']);
+			$statementUpdate->bindParam(':gemeente', $_POST['gemeente']);
+			$statementUpdate->bindParam(':omzet', $_POST['omzet']);
 			$statementUpdate->bindParam(':updated', $_POST['updated']);
 
 
-			$statementUpdate->execute();
+			$succesUpdate = $statementUpdate->execute();
+			if($succesUpdate)
+				{
+					$message['type'] = 'succes';
+					$message['text'] = 'uw item is geupdate.';
+				} else
+				{
+					$message['type'] = 'error';
+					$message['text'] = 'er ging iets mis: ' . $statementUpdate->errorInfo()[2];
+				}
 		}
 			
 		
@@ -86,12 +99,13 @@
 		$message['type'] = 'error';
 		$message['text'] = 'er ging iets mis: ' . $e->getMessage();
 	}
+	
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Crud Delete</title>
+	<title>Crud update</title>
 </head>
 <body>
 	<?php if($message): ?>
@@ -106,8 +120,13 @@
 		<?php endif ?>
 		<?php if(isset($_POST['update'])): ?>
 			<?php foreach ($updateNames as $key => $value): ?>
-				<label for="<?= $value ?>"> <?= $value ?> </label>
-				<input type="text" name="<?= $value ?>" id="<?= $value ?>" value="<?= $fetchBrouwers[$_POST['update']][$value]?>">
+				<?php foreach($fetchBrouwers as $brouwer): ?>
+					
+					<?php if($brouwer['brouwernr'] == $_POST['update']): ?>
+						<label for="<?= $value ?>"> <?= $value ?> </label>
+						<input type="text" name="<?= $value ?>" id="<?= $value ?>" value="<?= $brouwer[$value] ?>">
+					<?php endif ?>
+				<?php endforeach ?>
 			<?php endforeach ?>
 			<input type="submit" value="<?= $_POST['update'] ?>" name="updated">
 		<?php endif ?>
