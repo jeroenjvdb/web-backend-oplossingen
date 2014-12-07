@@ -1,7 +1,12 @@
 <?php
 	session_start();
 
-	
+	if(!isset($_POST))
+	{
+		$_SESSION[ 'notification' ][ 'type' ]	= 'error';
+		$_SESSION[ 'notification' ][ 'text' ]	= 'gelieve aan te melden';
+		header('location:login-form.php');
+	}
 	
 	//var_dump($_POST);
 	function __autoload( $classname )

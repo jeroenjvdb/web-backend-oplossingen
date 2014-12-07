@@ -47,6 +47,7 @@
 	<title>dashboard</title>
 </head>
 <body>
+	<?= isset($_SESSION['notification']) ? $_SESSION['notification']['text'] : '' ?>
 	<?php if($loggedIn): ?>
 		<h1>Dashboard</h1>
 		<a href="logout.php">uitloggen</a>

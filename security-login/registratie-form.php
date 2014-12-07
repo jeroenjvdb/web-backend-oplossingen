@@ -3,6 +3,8 @@
 	//var_dump($_SESSION);
 	if(isset($_COOKIE['login']))
 	{
+		$_SESSION[ 'notification' ][ 'type' ]	= 'error';
+		$_SESSION[ 'notification' ][ 'text' ]	= 'u bent reeds aangemeld';
 		header('location:dashboard.php');
 	}
 
