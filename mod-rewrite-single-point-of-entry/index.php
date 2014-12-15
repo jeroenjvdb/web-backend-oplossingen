@@ -3,6 +3,9 @@
 	{
 		require_once( "classes/" . $classname . '.php' );
 	}
+
+	echo '<h1>index.php</h1>';
+	var_dump($_GET);
 	$className = false;
 
 
@@ -51,15 +54,3 @@
 
 
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>index.php</title>
-</head>
-<body>
-	<h1>index.php</h1>
-	<?php var_dump($_GET) ?>
-</body>
-</html>
