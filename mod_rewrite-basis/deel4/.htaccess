@@ -1,0 +1,3 @@
+RewriteEngine On
+DirectoryIndex original.php
+RewriteRule ^([^/\.]+)/?$ original.php?role=admin&student=$1
